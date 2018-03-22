@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <?!= include('style'); ?>
+</head>
+<body>
+  <div class="content">
+    <div class="form-group">
+      <input id="searchBox" class="full-width" type="text"></input>
+      <button id="searchButton" class="action">Search</button>
+    </div>
+
+    <div id="result">
+      <p><b><span id="pokeName"></span></b></p>
+      <img id="pokeSprite">
+      <img id="pokeShiny">
+    </div>
+  </div>
+
+  <?!= include('script'); ?>
+</body>
+</html>
