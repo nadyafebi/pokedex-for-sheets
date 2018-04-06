@@ -1,21 +1,16 @@
 <script>
 window.onload = function()
 {
-  document.getElementById('searchButton').onclick = function()
-  {
-    var textBox = document.getElementById('searchBox');
+  $('#searchButton').click(function() {
+    var pokemon = $('#searchBox').val();
+    google.script.run.withSuccessHandler(onSuccess).getPokemon(pokemon);
 
     function onSuccess(output)
     {
-      var nameBox = document.getElementById("pokeName");
-      var imageBox = document.getElementById("pokeSprite");
-      var shinyBox = document.getElementById("pokeShiny");
-      nameBox.innerHTML = output.name;
-      imageBox.src = output.sprites.front_default;
-      shinyBox.src = output.sprites.front_shiny;
+      $('#pokeName').html(output.name);
+      $('#pokeSprite').attr('src', output.sprites.front_default);
+      $('#pokeShiny').attr('src', output.sprites.front_shiny);
     }
-
-    google.script.run.withSuccessHandler(onSuccess).myFunc(textBox.value);
-  };
+  });
 };
 </script>

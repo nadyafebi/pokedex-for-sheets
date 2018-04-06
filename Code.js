@@ -13,28 +13,20 @@ function onOpen(e) {
 }
 
 function showSidebar() {
-  var sidebar = doGet().setTitle(ADDON_NAME);
+  var sidebar = HtmlService.createTemplateFromFile('sidebar')
+                           .evaluate()
+                           .setTitle(ADDON_NAME);
 
   SpreadsheetApp.getUi().showSidebar(sidebar);
 }
 
-function myFunc(name)
+function getPokemon(name)
 {
   var url = "http://pokeapi.co/api/v2/pokemon/" + name;
   var options = {
     'method': 'GET'
-  }
+  };
 
   var response = UrlFetchApp.fetch(url, options);
   return JSON.parse(response.getContentText());
-}
-
-function doGet(request) {
-  return HtmlService.createTemplateFromFile('sidebar')
-                    .evaluate();
-}
-
-function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename)
-                    .getContent();
 }
