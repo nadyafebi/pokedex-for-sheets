@@ -1,13 +1,11 @@
 <script>
-window.onload = function()
-{
+window.onload = function() {
   $('#searchButton').click(function() {
-    var pokemon = $('#searchBox').val();
+    var pokemon = $('#searchBox').val().toLowerCase();
     google.script.run.withSuccessHandler(onSuccess).getPokemon(pokemon);
 
-    function onSuccess(output)
-    {
-      $('#pokeName').html(output.name);
+    function onSuccess(output) {
+      $('#pokeName').html(output.name.charAt(0).toUpperCase() + output.name.substr(1));
       $('#pokeSprite').attr('src', output.sprites.front_default);
       $('#pokeShiny').attr('src', output.sprites.front_shiny);
     }

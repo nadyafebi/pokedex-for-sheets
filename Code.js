@@ -20,8 +20,7 @@ function showSidebar() {
   SpreadsheetApp.getUi().showSidebar(sidebar);
 }
 
-function getPokemon(name)
-{
+function getPokemon(name) {
   var url = "http://pokeapi.co/api/v2/pokemon/" + name;
   var options = {
     'method': 'GET'
@@ -29,4 +28,9 @@ function getPokemon(name)
 
   var response = UrlFetchApp.fetch(url, options);
   return JSON.parse(response.getContentText());
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+                    .getContent();
 }
