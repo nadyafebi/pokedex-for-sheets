@@ -1,13 +1,19 @@
 <script>
 window.onload = function() {
   $('#searchButton').click(function() {
+    $('#result').hide();
+    $('#loading').show();
     var pokemon = $('#searchBox').val().toLowerCase();
     google.script.run.withSuccessHandler(onSuccess).getPokemon(pokemon);
 
     function onSuccess(output) {
       $('#pokeName').html(output.name.charAt(0).toUpperCase() + output.name.substr(1));
+      $('#pokeNumber').html(output.id);
       $('#pokeSprite').attr('src', output.sprites.front_default);
       $('#pokeShiny').attr('src', output.sprites.front_shiny);
+
+      $('#loading').hide();
+      $('#result').fadeIn();
     }
   });
 };
