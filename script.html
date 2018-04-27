@@ -11,6 +11,7 @@ window.onload = function() {
       $('#pokeNumber').html(output.id);
       $('#pokeSprite').attr('src', output.sprites.front_default);
       $('#pokeShiny').attr('src', output.sprites.front_shiny);
+      $('#pokeType').html(output.types[0].type.name);
 
       $('#loading').hide();
       $('#result').fadeIn();
